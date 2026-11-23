@@ -1,0 +1,32 @@
+<form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+  <h2>Registrar biblioteca</h2>
+
+  <label for="nombre">Nombre</label>
+  <input id="nombre" type="text" formControlName="nombre" maxlength="100" />
+  @if (invalido('nombre')) {
+    <small class="error">El nombre es obligatorio.</small>
+  }
+
+  <label for="direccion">Dirección</label>
+  <input id="direccion" type="text" formControlName="direccion" maxlength="150" />
+  @if (invalido('direccion')) {
+    <small class="error">La dirección es obligatoria.</small>
+  }
+
+  <label for="ciudad">Ciudad</label>
+  <input id="ciudad" type="text" formControlName="ciudad" maxlength="80" />
+  @if (invalido('ciudad')) {
+    <small class="error">La ciudad es obligatoria.</small>
+  }
+
+  <button type="submit" [disabled]="enviando()">
+    {{ enviando() ? 'Guardando…' : 'Registrar' }}
+  </button>
+
+  @if (mensaje()) {
+    <p class="ok">{{ mensaje() }}</p>
+  }
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+</form>
