@@ -1,0 +1,11 @@
+<main>
+  <h1>Red de Bibliotecas</h1>
+
+  <app-biblioteca-form (creada)="cargar()" />
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+
+  <app-libro-tabla [bibliotecas]="bibliotecas()" />
+</main>
